@@ -1,0 +1,32 @@
+{
+  "name": "fridge-notes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/khubo/fridge-notes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/khubo/fridge-notes/issues"
+  },
+  "homepage": "https://github.com/khubo/fridge-notes#readme",
+  "dependencies": {
+    "earthstar": "^6.6.1",
+    "minimist": "^1.2.5",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.15",
+    "@babel/node": "^7.13.13",
+    "@babel/preset-env": "^7.13.15"
+  }
+}
