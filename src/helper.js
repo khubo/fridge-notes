@@ -13,7 +13,6 @@ export function getUserAuth() {
   // then fetch it and return
   if (existsSync(KEY_FILE)) {
     const auth = JSON.parse(readFileSync(KEY_FILE, { encoding: "utf-8" }));
-    console.log("returning from here");
     return auth;
   }
 
@@ -48,3 +47,8 @@ export function getUserAuth() {
   });
   return auth;
 }
+
+const randInt = (lo, hi) => Math.floor(Math.random() * (hi + 1 - lo) + lo);
+
+export const generateNoteId = () =>
+  `${Date.now()}:${randInt(10000000, 99999999)}`;

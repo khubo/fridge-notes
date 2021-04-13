@@ -1,8 +1,28 @@
+import {
+  OnePubOneWorkspaceSyncer,
+  StorageMemory,
+  ValidatorEs4,
+} from "earthstar";
 import minimist from "minimist";
-import { getUserAuth } from "./helper";
+
+import { PUB_ADDRESS, WORKSPACE } from "./config";
+import { createNote, readAllNotes, syncData } from "./actions";
 
 const args = minimist(process.argv.slice(2));
 
-let auth = getUserAuth();
+const storage = new StorageMemory([ValidatorEs4], WORKSPACE);
+const syncer = new OnePubOneWorkspaceSyncer(storage, PUB_ADDRESS);
 
-console.log("auth is", auth);
+if (args["new"]) {
+  createNote(storage, args["new"]);
+  if (args["sync"]) syncData(syncer);
+}
+
+if (args["list"]) {
+  (async () => {
+    if (args["sync"]) {
+      await syncer.syncOnce(false);
+    }
+    readAllNotes(storage);
+  })();
+}
